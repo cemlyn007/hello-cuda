@@ -1,0 +1,4 @@
+bazel-*
+.cache
+compile_commands.json
+external
