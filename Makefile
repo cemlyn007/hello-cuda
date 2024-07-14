@@ -6,10 +6,10 @@ clean:
 	bazelisk clean --expunge
 
 build:
-	bazelisk build $(flags) :main
+	bazelisk build $(flags) hello_world:main
 
 run: build
-	./bazel-bin/main
+	./bazel-bin/hello_world/main
 
 refresh: build
 	bazelisk run @hedron_compile_commands//:refresh_all -- $(flags)
