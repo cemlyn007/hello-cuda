@@ -17,6 +17,12 @@ build_vector_addition:
 run_vector_addition: build_vector_addition
 	./bazel-bin/vector_addition/main
 
+build_grayscale:
+	bazelisk build $(flags) grayscale:main
+
+run_grayscale: build_grayscale
+	./bazel-bin/grayscale/main
+
 refresh:
 	bazelisk build $(flags) //...
 	bazelisk run @hedron_compile_commands//:refresh_all -- $(flags)
