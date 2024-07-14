@@ -5,11 +5,18 @@ clean:
 	rm compile_commands.json
 	bazelisk clean --expunge
 
-build:
+build_hello_world:
 	bazelisk build $(flags) hello_world:main
 
-run: build
+run_hello_world: build_hello_world
 	./bazel-bin/hello_world/main
 
-refresh: build
+build_vector_addition:
+	bazelisk build $(flags) vector_addition:main
+
+run_vector_addition: build_vector_addition
+	./bazel-bin/vector_addition/main
+
+refresh:
+	bazelisk build $(flags) //...
 	bazelisk run @hedron_compile_commands//:refresh_all -- $(flags)
