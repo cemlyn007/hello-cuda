@@ -27,6 +27,8 @@ git_override(
 cuda = use_extension('@rules_cuda//cuda:extensions.bzl', 'toolchain', dev_dependency = True)
 cuda.local_toolchain()
 
+bazel_dep(name = "libjpeg_turbo", version = "2.1.91")
+
 # Hedron's Compile Commands Extractor for Bazel
 # https://github.com/hedronvision/bazel-compile-commands-extractor
 bazel_dep(name = "hedron_compile_commands", dev_dependency = True)

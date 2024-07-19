@@ -1,15 +1,20 @@
 #include "kernel.h"
+#include "utils/jpeg.h"
 #include <cstdlib>
-#include <iostream>
 
 int main() {
+  auto filename = "image.jpeg";
+  std::vector<unsigned char> image;
+  unsigned width;
+  unsigned height;
+  unsigned channels;
+  read_jpeg_file(filename, image, width, height, channels);
 
-  unsigned char Pin[] = {200, 2, 3, 0, 192, 64};
-  unsigned char Pout[] = {0, 0};
+  std::vector<unsigned char> imageOut(width*height);
 
-  rgbToGrayscale(Pout, Pin, 2, 1);
+  rgbToGrayscale(imageOut.data(), image.data(), width, height);
 
-  std::cout << Pout[0] << " " << Pout[1] << std::endl;
+  write_jpeg_file("grayscale.jpeg", imageOut, width, height, 1, 100);
 
   return 0;
 }
