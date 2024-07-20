@@ -35,6 +35,12 @@ build_matrix_multiplication:
 run_matrix_multiplication: build_matrix_multiplication
 	./bazel-bin/matrix_multiplication/main
 
+build_matrix_multiplication_per_row:
+	bazelisk build $(flags) matrix_multiplication_per_row:main
+
+run_matrix_multiplication_per_row: build_matrix_multiplication_per_row
+	./bazel-bin/matrix_multiplication_per_row/main
+
 refresh:
 	bazelisk build $(flags) //...
 	bazelisk run @hedron_compile_commands//:refresh_all -- $(flags)
