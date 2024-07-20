@@ -33,33 +33,20 @@
             },
         },
         {
-            "name": "CUDA C++: Launch",
+            "name": "CUDA-GDB Debug Matrix Multiplication",
             "type": "cuda-gdb",
             "request": "launch",
             "program": "${workspaceFolder}/bazel-bin/matrix_multiplication/main",
             "preLaunchTask": "Build Matrix Multiplication",
-            // "stopAtEntry": true,
-            // "cwd": "${workspaceFolder}",
-            //  --directory=\".\"
             "miDebuggerArgs": "--directory=${workspaceFolder}",
-            // "cwd": "${workspaceFolder}",
-            // "cwd": "${workspaceFolder}/bazel-bin/matrix_multiplication",
-            // "cwd": "${workspaceFolder}",
-            // "cwd": "bazel-out/k8-dbg/bin",
-            // "cwd": ".",
-            // "sourceFileMap": {
-            //     "/proc/self/cwd": "${workspaceFolder}",
-            //     ".": "${workspaceFolder}"
-            // }
-            // "args": "--directory=${workspaceFolder} --directory=\".\" --cd=${workspaceFolder}",
-            // "args": "--directory=${workspaceFolder} --cd=${workspaceFolder}",
         },
-        // {
-        //     "name": "CUDA C++: Attach",
-        //     "type": "cuda-gdb",
-        //     "request": "attach",
-        //     // "args": "--directory=${workspaceFolder} --directory=\".\" --cd=${workspaceFolder}",
-        //     // "args": "--directory=${workspaceFolder} --cd=${workspaceFolder}",
-        // }
+        {
+            "name": "CUDA-GDB Debug Matrix Vector Multiplication",
+            "type": "cuda-gdb",
+            "request": "launch",
+            "program": "${workspaceFolder}/bazel-bin/matrix_vector_multiplication/main",
+            "preLaunchTask": "Build Matrix Vector Multiplication",
+            "miDebuggerArgs": "--directory=${workspaceFolder}",
+        },
     ]
 }

@@ -7,6 +7,11 @@
             "label": "Build Matrix Multiplication",
             "type": "shell",
             "command": "make build_matrix_multiplication",
+        },
+        {
+            "label": "Build Matrix Vector Multiplication",
+            "type": "shell",
+            "command": "make build_matrix_vector_multiplication",
         }
     ]
 }

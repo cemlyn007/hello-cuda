@@ -47,6 +47,8 @@ build_matrix_multiplication_per_column:
 run_matrix_multiplication_per_column: build_matrix_multiplication_per_column
 	./bazel-bin/matrix_multiplication_per_column/main
 
-refresh:
-	bazelisk build $(flags) //...
-	bazelisk run @hedron_compile_commands//:refresh_all -- $(flags)
+build_matrix_vector_multiplication:
+	bazelisk build $(flags) matrix_vector_multiplication:main
+
+run_matrix_vector_multiplication: build_matrix_vector_multiplication
+	./bazel-bin/matrix_vector_multiplication/main
