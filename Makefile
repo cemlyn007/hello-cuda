@@ -1,8 +1,8 @@
 CXX_VERSION=c++20
-flags = -s --subcommands --compilation_mode=opt --action_env=BAZEL_CXXOPTS="-std=$(CXX_VERSION)" --host_cxxopt="-std=$(CXX_VERSION)" --cxxopt="-std=$(CXX_VERSION)" --@rules_cuda//cuda:archs=sm_89 --action_env=CUDA_PATH=/usr/local/cuda-12.5 --repo_env=CC=clang --platforms=@toolchains_llvm//platforms:linux-x86_64 --@rules_cuda//cuda:compiler=clang
+flags = -s --subcommands --compilation_mode=dbg --action_env=BAZEL_CXXOPTS="-std=$(CXX_VERSION)" --host_cxxopt="-std=$(CXX_VERSION)" --cxxopt="-std=$(CXX_VERSION)" --@rules_cuda//cuda:archs=sm_89 --action_env=CUDA_PATH=/usr/local/cuda-12.5 --repo_env=CC=gcc --platforms=@toolchains_llvm//platforms:linux-x86_64 --@rules_cuda//cuda:compiler=nvcc --spawn_strategy=local --sandbox_debug --strip=never --features=cuda_device_debug
 
 clean:
-	rm compile_commands.json
+	rm -f compile_commands.json
 	bazelisk clean --expunge
 
 build_hello_world:
@@ -28,6 +28,12 @@ build_blur:
 
 run_blur: build_blur
 	./bazel-bin/blur/main
+
+build_matrix_multiplication:
+	bazelisk build $(flags) matrix_multiplication:main
+
+run_matrix_multiplication: build_matrix_multiplication
+	./bazel-bin/matrix_multiplication/main
 
 refresh:
 	bazelisk build $(flags) //...
